@@ -13,14 +13,14 @@ class UserController extends Controller
     public function register(Request $request){
 
         $fields = $request->validate([
-            'name' => 'required|string',
+            'username' => 'required|string',
             'email' => 'required|string|unique:users,email',
             'password' => 'required|string|confirmed'
         ]);
 
 
         $user = User::create([
-            'name' => $fields['name'],
+            'name' => $fields['username'],
             'email' => $fields['email'],
             'password' => bcrypt($fields['password'])
 
@@ -33,7 +33,7 @@ class UserController extends Controller
             'token' => $token
         ];
 
-        return $response($response, 201);
+        return response($response, 201);
 
     }
 
@@ -50,7 +50,7 @@ class UserController extends Controller
     //check password
     if(!$user || !Hash::check($fields['password'], $user->password)){
         return response([
-            'message' => 'Wrong password'
+            "message" => "Bad credentials"
         ], 401);
     }
 
