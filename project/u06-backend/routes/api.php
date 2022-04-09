@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ListController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
@@ -17,8 +18,11 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::post('/register', [UserController::class, 'register']);
-Route::post('/login', [UserController::class, 'login']);
+Route::post('register', [UserController::class, 'register']);
+Route::post('login', [UserController::class, 'login']);
+Route::post('createlist', [ListController::class, 'create']);
+Route::get('showlists', [ListController::class, 'show']);
+Route::delete('destroy', [ListController::class, 'destroy']);
 
 
 
