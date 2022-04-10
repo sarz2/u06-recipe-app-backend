@@ -54,7 +54,7 @@ class UserController extends Controller
         ], 401);
     }
 
-    $token = $user->createToken('recipeapptoken')->plainTextToken;
+    $token = $user->createToken('access_token')->plainTextToken;
 
     $response = [
         'user' => $user,
