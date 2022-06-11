@@ -20,12 +20,13 @@ use App\Http\Controllers\UserController;
 
 Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
-Route::post('createlist', [ListController::class, 'create']);
 Route::get('showlists', [ListController::class, 'show']);
-Route::delete('destroy', [ListController::class, 'destroy']);
+
+Route::group(['middleware' => ['auth:sanctum']],  function () {
+    Route::post('destroy', [ListController::class, 'destroy']);
+    Route::post('addtolist', [RecipeController::class, 'store']);
+    Route::post('createlist', [ListController::class, 'create']);
 
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
 });
