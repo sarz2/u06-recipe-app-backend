@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('list_id');
             $table->string('title');
             $table->longText('ingredientLines');
-            $table->string('image');
+            $table->longText('image');
             $table->string('SELFREF');
             $table->timestamps();
         });
