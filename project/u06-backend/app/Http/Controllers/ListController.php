@@ -11,17 +11,23 @@ class ListController extends Controller
     public function create(Request $request){
         $validatedData = $request->validate([
             'title' => 'required',
-            'email' => 'required', //auth()->user()->id
+            'email' => 'required', 
                 ]);
          RecipeList::create($validatedData);
+         return response([
+            "message" => "List created"
+        ], 201);
     }
 
     public function show(){
         return RecipeListResource::collection(RecipeList::all());
     }
 
-    public function destroy($id){
-        $recipeList = RecipeList::find($id);
-        $recipeList->delete();
+    public function destroy(Request $request){
+        RecipeList::where('id', $request->id)->delete();
+        return RecipeListResource::collection(RecipeList::all());
+        return response([
+            "message" => "List deleted"
+        ], 201);
     }
 }
