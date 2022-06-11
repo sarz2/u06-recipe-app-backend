@@ -10,7 +10,7 @@ class Recipe extends Model
 {
     protected $fillable =[
 
-        'label',
+        'title',
         'image',
         'ingredientLines',
         'SELFREF',
