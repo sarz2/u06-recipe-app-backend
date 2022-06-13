@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\RecipeListResource;
+use App\Http\Resources\RecipeResource;
 use App\Models\Recipelist;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Log;
 
 class ListController extends Controller
 {
@@ -21,6 +25,11 @@ class ListController extends Controller
 
     public function show(){
         return RecipeListResource::collection(RecipeList::all());
+    }
+
+    public function showOneList($id){
+         return Recipe::where('list_id', $id)->get();
+        
     }
 
     public function destroy(Request $request){
