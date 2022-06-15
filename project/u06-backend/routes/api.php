@@ -27,8 +27,6 @@ Route::group(['middleware' => ['auth:sanctum']],  function () {
     Route::post('createlist', [ListController::class, 'create']);
     Route::get('showlists', [ListController::class, 'show']);
     Route::get('showlist/{id}', [ListController::class, 'showOneList']);
-
-
-
+    Route::post('removerecipe', [RecipeController::class, 'removeRecipe']);
 
 });

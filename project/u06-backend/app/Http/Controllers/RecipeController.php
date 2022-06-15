@@ -18,4 +18,9 @@ class RecipeController extends Controller
             ]
             );
         }
+
+
+        public function removeRecipe(Request $request){
+            Recipe::where('id', $request->id)->delete();
+        }
 }
