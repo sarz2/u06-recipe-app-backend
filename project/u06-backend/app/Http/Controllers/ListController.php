@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\RecipeListResource;
 use App\Http\Resources\RecipeResource;
-use App\Models\Recipelist;
+use App\Models\RecipeList;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 
@@ -17,7 +17,7 @@ class ListController extends Controller
             'title' => 'required',
             'email' => 'required', 
                 ]);
-         Recipelist::create($validatedData);
+         RecipeList::create($validatedData);
          return response([
             "message" => "List created"
         ], 201);
