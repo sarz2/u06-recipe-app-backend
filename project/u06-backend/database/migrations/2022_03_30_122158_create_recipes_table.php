@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('list_id');
-            $table->string('title')->unique();
+            $table->string('title');
             $table->longText('ingredientLines');
             $table->longText('image');
             $table->string('SELFREF');
