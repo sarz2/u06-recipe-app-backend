@@ -17,7 +17,7 @@ class ListController extends Controller
             'title' => 'required',
             'email' => 'required', 
                 ]);
-         RecipeList::create($validatedData);
+         Recipelist::create($validatedData);
          return response([
             "message" => "List created"
         ], 201);
@@ -39,4 +39,6 @@ class ListController extends Controller
             "message" => "List deleted"
         ], 201);
     }
+
+
 }
